@@ -68,8 +68,9 @@ def select_dice(score, opponent_score):
     """
     "*** YOUR CODE HERE ***"
     if (score + opponent_score) % 7 == 0:
-        dice=six_sided
-        return("Hog wild!")
+        return(four_sided)
+    else:
+        return(six_sided)
 
 def other(who):
     """Return the other player, for a player WHO numbered 0 or 1.
@@ -95,6 +96,15 @@ def play(strategy0, strategy1, goal=GOAL_SCORE):
     who = 0  # Which player is about to take a turn, 0 (first) or 1 (second)
     score, opponent_score = 0, 0
     "*** YOUR CODE HERE ***"
+    while score < goal or opponent_score < goal:
+        dice = select_dice(score, opponent_score)
+        strategy0(score, opponent_score)
+        strategy1(opponent_score, score)
+        take_turn(roll_dice, opponent_score, dice)
+        
+    take_turn
+    select_dice
+    other
     return score, opponent_score  # You may wish to change this line.
 
 #######################
